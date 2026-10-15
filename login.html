@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login — Campus Voice</title>
+  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="login-body">
+  <div class="login-shell">
+    <aside class="login-side">
+      <a href="index.html" class="brand"><span class="brand-mark" data-icon="cap" data-size="22"></span>Campus Voice</a>
+      <div class="side-art"><img src="assets/images/campus-hero.svg" alt="" onerror="this.remove()"></div>
+      <h2>Your Campus. Your Community. Your Voice.</h2>
+      <p>One place for announcements, events and opportunities.</p>
+    </aside>
+
+    <main class="login-main">
+      <a href="index.html" class="back"><span data-icon="arrow" style="display:inline-block;transform:rotate(180deg)" data-size="16"></span> Back to Home</a>
+      <h1>Welcome to Campus Voice</h1>
+      <p class="sub">Sign in to stay connected with your campus.</p>
+      <div class="demo-note"><strong>Demo mode:</strong> this is a frontend demonstration. No real authentication happens, and any well-formed email/ID with a password of 6+ characters will open the demo dashboards. Real login needs a backend.</div>
+
+      <div class="roles" role="radiogroup" aria-label="Choose your role">
+        <button type="button" class="role active" role="radio" aria-checked="true" data-role="student"><span class="ico-box" data-icon="user" data-size="22"></span><b>Student</b><small>View campus updates</small></button>
+        <button type="button" class="role" role="radio" aria-checked="false" data-role="department"><span class="ico-box" data-icon="building" data-size="22"></span><b>Department</b><small>Publish announcements</small></button>
+      </div>
+
+      <form id="studentForm" class="lform" novalidate data-role="student" aria-label="Student login">
+        <div class="field"><label for="sId">College email or student ID</label><input id="sId" name="id" autocomplete="username" placeholder="e.g. 1XX23CS001 or name@college.edu"><p class="err" id="sIdE" role="alert"></p></div>
+        <div class="field"><label for="sPw">Password</label><div class="pw"><input id="sPw" type="password" autocomplete="current-password" placeholder="Enter your password"><button type="button" class="eye" aria-label="Show password" aria-pressed="false" data-icon="eye"></button></div><p class="err" id="sPwE" role="alert"></p></div>
+        <div class="row"><label class="check"><input type="checkbox" id="remember"> Remember me</label><a href="#" class="forgot">Forgot password?</a></div>
+        <button class="btn btn-primary full" type="submit">Login as Student</button>
+      </form>
+
+      <form id="deptForm" class="lform" novalidate hidden data-role="department" aria-label="Department login">
+        <div class="field"><label for="dId">Department email</label><input id="dId" type="email" autocomplete="username" placeholder="department@college.edu"><p class="err" id="dIdE" role="alert"></p></div>
+        <div class="field"><label for="dPw">Password</label><div class="pw"><input id="dPw" type="password" autocomplete="current-password" placeholder="Enter your password"><button type="button" class="eye" aria-label="Show password" aria-pressed="false" data-icon="eye"></button></div><p class="err" id="dPwE" role="alert"></p></div>
+        <div class="row"><span></span><a href="#" class="forgot">Forgot password?</a></div>
+        <button class="btn btn-primary full" type="submit">Login as Department</button>
+      </form>
+      <p class="toast" id="toast" role="status" hidden></p>
+    </main>
+  </div>
+  <script src="js/common.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Department Dashboard — Campus Voice</title>
+  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+<div class="dash">
+  <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+    <a href="index.html" class="brand"><span class="brand-mark" data-icon="cap" data-size="20"></span>Campus Voice</a>
+    <button class="side-link" data-view="overview" data-title="Department Dashboard"><span data-icon="layout"></span>Overview</button>
+    <button class="side-link" data-view="publish" data-title="Publish Announcement"><span data-icon="plus"></span>Publish Announcement</button>
+    <button class="side-link" data-view="manage" data-title="Manage Announcements"><span data-icon="list"></span>Manage Announcements</button>
+    <button class="side-link" data-view="events" data-title="Upcoming Events"><span data-icon="calendar"></span>Upcoming Events</button>
+    <button class="side-link" data-view="notifications" data-title="Notification Status"><span data-icon="bell"></span>Notification Status</button>
+    <button class="side-link" data-view="profile" data-title="Department Profile"><span data-icon="building"></span>Department Profile</button>
+    <div class="side-spacer"></div>
+    <button class="side-link" data-logout><span data-icon="logout"></span>Logout</button>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <div class="dash-main">
+    <header class="topbar">
+      <button class="icon-btn side-toggle" id="sideToggle" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar"><span data-icon="menu"></span></button>
+      <h1 id="pageTitle">Department Dashboard</h1>
+      <button class="btn btn-primary push" style="margin-left:auto;padding:10px 16px" data-view="publish"><span data-icon="plus" data-size="16"></span>Publish Announcement</button>
+      <div class="profile">
+        <button class="profile-btn" id="pBtn" aria-haspopup="true" aria-expanded="false"><span class="avatar">CS</span><span class="pname">CSE Department</span><span data-icon="chevron" data-size="16"></span></button>
+        <div class="menu" id="pMenu"><button data-logout><span data-icon="logout" data-size="18"></span>Logout</button></div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="demo-note" style="margin:0"><strong>Frontend demo:</strong> announcements you create are saved in this browser's localStorage only. They are not shared with other users or devices, and this page's access check is client-side only. A real deployment needs a shared database and server-side authorization.</div>
+
+      <section class="view" id="view-overview">
+        <div class="welcome"><h2>Department Overview</h2><p>Computer Science and Engineering (sample department)</p></div>
+        <div class="stats" style="margin-top:22px">
+          <div class="stat"><div class="ico-box" data-icon="megaphone"></div><div><b id="stP">0</b><span>Published by you</span></div></div>
+          <div class="stat"><div class="ico-box" data-icon="file"></div><div><b id="stDr">0</b><span>Drafts</span></div></div>
+          <div class="stat"><div class="ico-box" data-icon="calendar"></div><div><b id="stEv">0</b><span>Upcoming events</span></div></div>
+          <div class="stat"><div class="ico-box" data-icon="users"></div><div><b>—</b><span>Reach (needs backend)</span></div></div>
+        </div>
+        <div class="panel" style="margin-top:22px"><h3>Recent announcements <button class="link-btn" data-view="manage">Manage</button></h3><div class="table-wrap" id="recentTbl"></div></div>
+      </section>
+
+      <section class="view" id="view-publish" hidden>
+        <div class="panel"><h3>New announcement</h3>
+          <form id="annForm" novalidate>
+            <div class="form-grid">
+              <div class="fld full"><label for="fTitle">Announcement title</label><input id="fTitle" maxlength="120" placeholder="e.g. Lab schedule update"><p class="err" id="eTitle"></p></div>
+              <div class="fld full"><label for="fDesc">Description</label><textarea id="fDesc" placeholder="Write the announcement details…"></textarea><p class="err" id="eDesc"></p></div>
+              <div class="fld"><label for="fDept">Department</label><select id="fDept"></select></div>
+              <div class="fld"><label for="fCat">Category</label><select id="fCat"></select></div>
+              <div class="fld"><label for="fAud">Target audience</label><select id="fAud"><option>All Students</option><option>Specific Department</option><option>Selected Student Groups</option></select></div>
+              <div class="fld"><label for="fPub">Publication date</label><input id="fPub" type="date"><p class="err" id="ePub"></p></div>
+              <div class="fld"><label for="fExp">Expiry date (optional)</label><input id="fExp" type="date"><p class="err" id="eExp"></p></div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit" data-mode="published">Publish</button>
+              <button class="btn btn-ghost" type="button" id="saveDraft">Save Draft</button>
+              <button class="btn btn-ghost" type="button" id="cancel">Cancel</button>
+            </div>
+          </form></div>
+      </section>
+
+      <section class="view" id="view-manage" hidden>
+        <div class="panel"><h3>Manage announcements</h3><div class="table-wrap" id="manageTbl"></div></div>
+      </section>
+
+      <section class="view" id="view-events" hidden><div class="grid-2" id="evGrid"></div></section>
+
+      <section class="view" id="view-notifications" hidden>
+        <div class="panel"><h3>Notification status</h3><div id="notifStatus"></div>
+          <p class="muted">Real delivery tracking (sent, delivered, read) requires a backend with notification services. This list reflects only items created in this browser.</p></div>
+      </section>
+
+      <section class="view" id="view-profile" hidden>
+        <div class="panel"><h3>Department profile <span class="status st-sample">Demo data</span></h3>
+          <div class="profile-grid">
+            <div><small>Department</small><b>Computer Science and Engineering</b></div><div><small>Code</small><b>CSE</b></div>
+            <div><small>Contact email</small><b>cse@example.edu</b></div><div><small>Role</small><b>Announcement publisher (demo)</b></div>
+          </div></div>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/dash-common.js"></script>
+<script src="js/department-dashboard.js"></script>
+</body>
+</html>

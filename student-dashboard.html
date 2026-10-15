@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Dashboard — Campus Voice</title>
+  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+<div class="dash">
+  <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+    <a href="index.html" class="brand"><span class="brand-mark" data-icon="cap" data-size="20"></span>Campus Voice</a>
+    <button class="side-link" data-view="dashboard" data-title="Student Dashboard"><span data-icon="layout"></span>Dashboard</button>
+    <button class="side-link" data-view="announcements" data-title="All Announcements"><span data-icon="megaphone"></span>All Announcements</button>
+    <button class="side-link" data-view="department" data-title="My Department"><span data-icon="building"></span>My Department</button>
+    <button class="side-link" data-view="events" data-title="Events"><span data-icon="calendar"></span>Events</button>
+    <button class="side-link" data-view="notifications" data-title="Notifications"><span data-icon="bell"></span>Notifications<span class="count" id="sideCount">3</span></button>
+    <button class="side-link" data-view="profile" data-title="Profile"><span data-icon="user"></span>Profile</button>
+    <div class="side-spacer"></div>
+    <button class="side-link" data-logout><span data-icon="logout"></span>Logout</button>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <div class="dash-main">
+    <header class="topbar">
+      <button class="icon-btn side-toggle" id="sideToggle" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar"><span data-icon="menu"></span></button>
+      <h1 id="pageTitle">Student Dashboard</h1>
+      <div class="search"><span data-icon="search" data-size="18"></span><label class="sr-only" for="topQ">Search announcements</label><input id="topQ" type="search" placeholder="Search announcements…"></div>
+      <button class="icon-btn push" id="bellBtn" aria-label="Notifications"><span data-icon="bell"></span><span class="dot" id="bellDot"></span></button>
+      <div class="profile">
+        <button class="profile-btn" id="pBtn" aria-haspopup="true" aria-expanded="false"><span class="avatar">DS</span><span class="pname">Demo Student</span><span data-icon="chevron" data-size="16"></span></button>
+        <div class="menu" id="pMenu">
+          <button data-view="profile"><span data-icon="user" data-size="18"></span>Profile</button>
+          <button data-logout><span data-icon="logout" data-size="18"></span>Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="view" id="view-dashboard">
+        <div class="welcome"><h2>Welcome back, Demo Student</h2><p>Here's what's new on campus today. (Sample student and sample data.)</p></div>
+        <div class="stats" style="margin-top:22px">
+          <div class="stat"><div class="ico-box" data-icon="megaphone"></div><div><b id="stA">0</b><span>Announcements</span></div></div>
+          <div class="stat"><div class="ico-box" data-icon="calendar"></div><div><b id="stE">0</b><span>Upcoming events</span></div></div>
+          <div class="stat"><div class="ico-box" data-icon="bell"></div><div><b id="stN">0</b><span>Unread notifications</span></div></div>
+          <div class="stat"><div class="ico-box" data-icon="building"></div><div><b id="stD">0</b><span>My dept. notices</span></div></div>
+        </div>
+        <div class="two" style="margin-top:22px">
+          <div class="panel"><h3>Latest announcements <button class="link-btn" data-view="announcements">View all</button></h3><div class="stack" id="latest"></div></div>
+          <div style="display:grid;gap:22px">
+            <div class="panel"><h3>Upcoming events</h3><div class="stack" id="upEvents"></div></div>
+            <div class="panel"><h3>Recently published notices</h3><div id="recent"></div></div>
+          </div>
+        </div>
+        <div class="panel" style="margin-top:22px"><h3>Department updates <span class="muted">Computer Science and Engineering (sample)</span></h3><div class="grid-2" id="deptUpd"></div></div>
+      </section>
+
+      <section class="view" id="view-announcements" hidden>
+        <div class="toolbar">
+          <div class="chips" id="chips" role="group" aria-label="Category filters"></div>
+          <select class="sel" id="deptSel" aria-label="Filter by department"><option value="All">All departments</option></select>
+        </div>
+        <div class="grid-2" id="aGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="view" id="view-department" hidden>
+        <div class="panel" style="margin-bottom:20px"><h3>Computer Science and Engineering</h3><p class="muted" style="margin:0">Your department (sample). Updates published by this department appear below.</p></div>
+        <div class="grid-2" id="myDept"></div>
+      </section>
+
+      <section class="view" id="view-events" hidden><div class="grid-2" id="allEvents"></div></section>
+
+      <section class="view" id="view-notifications" hidden>
+        <div class="panel"><h3>Notifications <button class="link-btn" id="markRead">Mark all as read</button></h3><div id="notifList"></div></div>
+      </section>
+
+      <section class="view" id="view-profile" hidden>
+        <div class="panel"><h3>Profile <span class="status st-sample">Demo data</span></h3>
+          <div class="profile-grid">
+            <div><small>Name</small><b>Demo Student</b></div><div><small>Student ID</small><b>DEMO-0001</b></div>
+            <div><small>Department</small><b>Computer Science and Engineering</b></div><div><small>Semester</small><b>5</b></div>
+            <div><small>Email</small><b>student@example.edu</b></div><div><small>Account</small><b>Sample only, no real account</b></div>
+          </div></div>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/dash-common.js"></script>
+<script src="js/student-dashboard.js"></script>
+</body>
+</html>

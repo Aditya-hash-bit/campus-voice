@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus Voice — Your Campus. Your Community. Your Voice.</title>
+  <meta name="description" content="Campus Voice connects students and college departments with announcements, events and opportunities in one place.">
+  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-row">
+      <a href="index.html" class="brand" aria-label="Campus Voice home"><span class="brand-mark" data-icon="cap" data-size="22"></span>Campus Voice</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span data-icon="menu"></span></button>
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#departments">Departments</a><a href="#contact">Contact</a>
+        <a href="login.html" class="btn btn-primary">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><span data-icon="megaphone" data-size="16"></span> One place for every campus update</span>
+          <h1>Your Campus. Your Community. <span>Your Voice.</span></h1>
+          <p class="lead">Stay connected with every announcement, department update, event, and opportunity happening on your campus.</p>
+          <div class="hero-actions">
+            <a href="#announcements" class="btn btn-primary">Explore Updates</a>
+            <a href="login.html" class="btn btn-outline">Get Started</a>
+          </div>
+          <div class="hero-stats"><div><b>6</b>Departments</div><div><b>5</b>Categories</div><div><b>1</b>Unified feed</div></div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-img"><img src="assets/images/campus-hero.svg" alt="Illustration of a university building with students on campus" onerror="this.remove()"></div>
+          <span class="demo-tag">Demo content</span>
+          <div class="float f1"><i data-icon="file" data-size="18"></i><div><b>Examination timetable published</b><small>Sample notification</small></div></div>
+          <div class="float f2"><i data-icon="calendar" data-size="18"></i><div><b>Upcoming campus event</b><small>Sample notification</small></div></div>
+          <div class="float f3"><i data-icon="briefcase" data-size="18"></i><div><b>Placement registration open</b><small>Sample notification</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="white" id="about">
+      <div class="container">
+        <div class="sec-head"><h2>Everything students need, in one place</h2><p>Campus Voice brings departments and students together so nothing important gets missed.</p></div>
+        <div class="grid-4">
+          <div class="f-card"><div class="ico-box" data-icon="megaphone" data-size="24"></div><h3>Instant Announcements</h3><p>Departments publish notices that reach students right away.</p></div>
+          <div class="f-card"><div class="ico-box" data-icon="building" data-size="24"></div><h3>Department Updates</h3><p>Follow circulars and news from your own department and others.</p></div>
+          <div class="f-card"><div class="ico-box" data-icon="calendar" data-size="24"></div><h3>Campus Events</h3><p>Discover workshops, seminars and festivals before they happen.</p></div>
+          <div class="f-card"><div class="ico-box" data-icon="briefcase" data-size="24"></div><h3>Student Opportunities</h3><p>Placements, internships and volunteering, all easy to find.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="announcements">
+      <div class="container">
+        <div class="sec-head"><h2>What's Happening on Campus?</h2><p>Find important college updates here. Search or filter by category and department. (Sample announcements.)</p></div>
+        <div class="toolbar">
+          <div class="search"><span data-icon="search" data-size="18"></span><label class="sr-only" for="q">Search announcements</label><input id="q" type="search" placeholder="Search announcements…"></div>
+          <label class="sr-only" for="deptSel">Filter by department</label>
+          <select class="sel" id="deptSel"><option value="All">All departments</option></select>
+        </div>
+        <div class="chips" id="chips" role="group" aria-label="Category filters" style="margin-bottom:24px"></div>
+        <div class="grid-3" id="aGrid" aria-live="polite"></div>
+        <div class="center"><button class="btn btn-outline" id="viewAll">View All Announcements</button></div>
+      </div>
+    </section>
+
+    <section class="white" id="departments">
+      <div class="container">
+        <div class="sec-head"><h2>Explore Departments</h2><p>Jump straight to the updates that matter to you.</p></div>
+        <div class="grid-3" id="dGrid"></div>
+      </div>
+    </section>
+
+    <section id="events">
+      <div class="container">
+        <div class="sec-head"><h2>Upcoming Events</h2><p>Sample events shown for demonstration only.</p></div>
+        <div class="events-grid" id="eGrid"></div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="container"><div class="cta">
+        <h2>Never Miss an Important Campus Update.</h2>
+        <p>Access department announcements, academic notices, events, and opportunities from one place.</p>
+        <a href="login.html" class="btn btn-light">Get Started</a>
+      </div></div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="f-grid">
+        <div><a href="index.html" class="brand"><span class="brand-mark" data-icon="cap" data-size="22"></span>Campus Voice</a>
+          <p>A centralized communication platform connecting students and college departments.</p></div>
+        <div><h4>Quick links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#announcements">Announcements</a></li><li><a href="login.html">Login</a></li></ul></div>
+        <div><h4>Departments</h4><ul id="fDepts"></ul></div>
+        <div><h4>Contact</h4><ul><li>Email: <em>your-email@placeholder</em></li><li>Phone: <em>placeholder</em></li><li>Address: <em>placeholder</em></li></ul></div>
+      </div>
+      <div class="copy">© 2026 Campus Voice. Frontend demonstration project; all announcements, events and names are sample data.</div>
+    </div>
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
